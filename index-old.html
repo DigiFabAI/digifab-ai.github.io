@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DigiFab AI at Formnext 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="DigiFab AI builds multi-sensor AI copilots for real-time quality control in metal additive manufacturing. Meet Dr Isil Berkun at Formnext 2025.">
+
+  <style>
+    :root {
+      --green-main: #1dce70;
+      --green-bright: #07d227;
+      --charcoal: #20252D;
+      --white: #ffffff;
+      --bg: #020817;
+      --card: #050b16;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --radius-lg: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(7, 210, 39, 0.22), transparent 55%),
+        radial-gradient(circle at bottom right, #020713, #020617 40%, #000 80%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 16px 56px;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Top nav */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      position: sticky;
+      top: 0;
+      background: rgba(2, 8, 23, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 16px;
+      margin: -16px -16px 28px -16px;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.3);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 16px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-main);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--white);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .formnext-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      background: rgba(3, 7, 18, 0.85);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 44px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+      }
+    }
+
+    h1 {
+      font-size: clamp(32px, 3.5vw, 40px);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 22px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .meta-pill {
+      font-size: 12px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .meta-pill strong {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-right: 4px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition:
+        transform 0.08s ease,
+        box-shadow 0.08s ease,
+        background 0.08s ease,
+        border 0.08s ease,
+        color 0.08s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-main), var(--green-bright));
+      color: var(--charcoal);
+      font-weight: 600;
+      box-shadow: 0 16px 40px rgba(7, 210, 39, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 55px rgba(7, 210, 39, 0.65);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 16px 40px rgba(7, 210, 39, 0.4);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-muted);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--green-main);
+      color: var(--white);
+      background: rgba(3, 7, 18, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline:active {
+      transform: translateY(0);
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: 26px;
+      padding: 18px 18px 22px;
+      background:
+        radial-gradient(circle at top, rgba(29, 206, 112, 0.33), transparent 55%),
+        linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      overflow: hidden;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("logo-banner.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.07;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-visual-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.8fr 1.5fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 11px;
+    }
+
+    .chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--text-muted);
+    }
+
+    .hero-visual h2 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .hero-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: grid;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .hero-list li::before {
+      content: "•";
+      color: var(--green-main);
+      margin-right: 6px;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      opacity: 0.9;
+    }
+
+    .hero-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Sections */
+    section { margin-bottom: 40px; }
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      max-width: 640px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(3, 7, 18, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 14px 14px 16px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(29, 206, 112, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .bio-card {
+      background: rgba(3, 7, 18, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .bio-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .bio-role {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .contact-box {
+      background: rgba(3, 7, 18, 0.95);
+      border-radius: 18px;
+      padding: 28px;
+      border: 1px solid rgba(29, 206, 112, 0.5);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      font-size: 14px;
+    }
+
+    .contact-main {
+      color: var(--text-main);
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-main strong {
+      color: var(--green-main);
+      font-weight: 600;
+    }
+
+    .contact-main a {
+      color: var(--green-bright);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-main a:hover {
+      color: var(--green-main);
+      text-decoration: underline;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Contact form */
+    .contact-form {
+      margin-top: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid rgba(148, 163, 184, 0.5);
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--green-main);
+      box-shadow: 0 0 0 3px rgba(29, 206, 112, 0.3);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--text-muted);
+      opacity: 0.8;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav { justify-content: flex-start; }
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .hero-visual-inner { grid-template-columns: minmax(0, 1fr); }
+      .grid-3 { grid-template-columns: minmax(0, 1fr); }
+      .split { grid-template-columns: minmax(0, 1fr); }
+      .hero-visual { order: -1; }
+      .form-row-2 { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+
+  <script>
+    // Simple mailto-based contact form for static GitHub Pages
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const location = form.location.value.trim();
+      const message = form.message.value.trim();
+
+      const subject = encodeURIComponent("Formnext contact – " + (name || "DigiFab AI visitor"));
+      const bodyLines = [
+        "Name: " + name,
+        "Email: " + email,
+        "Location: " + location,
+        "",
+        "Message:",
+        message
+      ];
+      const body = encodeURIComponent(bodyLines.join("\\n"));
+
+      window.location.href = "mailto:berkunis@digifab.ai?subject=" + subject + "&body=" + body;
+    }
+
+    // Sticky header on scroll
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for fade-in animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="logo-mark.png" alt="DigiFab AI logo">
+        <div class="brand-name">DigiFab AI</div>
+      </div>
+      <nav>
+        <a href="#value">Why it matters</a>
+        <a href="#how">How it works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <span class="formnext-tag">Formnext 2025</span>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Live talk • Industry Stage • Formnext 2025</span>
+          </div>
+          <h1>AI copilots for real-time quality control in metal additive manufacturing</h1>
+          <p class="hero-subtitle">
+            DigiFab AI watches your melt pool, keyhole, and process signatures in real time, predicts defects as they form, and gives your machines the ability to respond instead of just report.
+          </p>
+
+          <div class="hero-meta">
+            <div class="meta-pill">
+              <strong>Session</strong> From Digital Twins to AI Copilots
+            </div>
+            <div class="meta-pill">
+              <strong>Speaker</strong> Dr Isil Berkun
+            </div>
+            <div class="meta-pill">
+              <strong>Where</strong> Hall 11.0 • Industry Stage • Booth D72
+            </div>
+            <div class="meta-pill">
+              <strong>When</strong> <!-- update once confirmed -->TBD – see Formnext agenda
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary"
+               href="https://calendly.com/berkunis-digifab">
+              Book a meeting at Formnext
+            </a>
+            <a class="btn btn-outline" href="#contact">
+              Contact & follow-up
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-visual">
+          <div class="hero-visual-inner">
+            <div>
+              <div class="hero-chip-row">
+                <span class="chip">Multi-sensor monitoring</span>
+                <span class="chip">Vision transformers</span>
+                <span class="chip">Closed-loop hooks</span>
+              </div>
+              <h2>What DigiFab AI brings to your line</h2>
+              <ul class="hero-list">
+                <li>Real-time risk scoring for pores, lack of fusion, balling, and geometry drift.</li>
+                <li>Sensor fusion across optical, thermal, and acoustic channels.</li>
+                <li>APIs and control hooks that integrate with existing machines instead of replacing them.</li>
+              </ul>
+              <p class="hero-note">
+                Designed for aerospace, energy, and industrial users who need traceable, certifiable builds – not just pretty heat maps.
+              </p>
+            </div>
+            <div class="hero-photo">
+              <img src="isil-portrait.jpg" alt="Dr Isil Berkun portrait">
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- VALUE PROP -->
+      <section id="value">
+        <h2 class="section-title">Why this matters for production AM</h2>
+        <p class="section-sub">
+          Most metal AM lines still treat quality control as a post-build activity. By the time CT or ultrasound tells you
+          something is wrong, the part and the time are already gone. DigiFab AI moves quality into the loop, next to your toolpath.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Catch defects while you can still act</h3>
+            <p>
+              Monitor keyhole stability, melt pool health, and process anomalies at frame-level resolution so
+              you can pause, adjust, or scrap early instead of discovering problems days later.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Generalize beyond one alloy or one machine</h3>
+            <p>
+              Our models learn representations that transfer across alloys, parameter sets, and even machine types,
+              reducing the cost of deploying AI at scale.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Build a data asset, not a dashboard</h3>
+            <p>
+              Structured logs, explainable alerts, and clear audit trails make it easier to plug into MES, PLM,
+              and certification workflows instead of creating yet another silo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how">
+        <h2 class="section-title">How the DigiFab AI copilot fits into your workflow</h2>
+        <p class="section-sub">
+          We work with the sensors and control interfaces you already have. The copilot ingests your signals, learns your process,
+          and surfaces actionable insights without forcing you to re-architect the line.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. Observe</h3>
+            <p>
+              Connect cameras, photodiodes, pyrometers, acoustic emission, and log streams. We align and synchronize signals from
+              microseconds to layers.
+            </p>
+            <div class="pill-row">
+              <span class="pill">LPBF</span>
+              <span class="pill">DED / WAAM</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>2. Understand</h3>
+            <p>
+              Vision transformers and temporal models transform raw sensor data into predictions of pore formation, spatter regimes,
+              and risk scores for each region of the build.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Keyhole dynamics</span>
+              <span class="pill">Process windows</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>3. Act</h3>
+            <p>
+              The copilot can trigger alerts, flag regions for inspection, or send parameter nudges through your existing control systems,
+              enabling gradual automation instead of a big bang.
+            </p>
+            <div class="pill-row">
+              <span class="pill">REST / gRPC APIs</span>
+              <span class="pill">On-prem or cloud</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="split">
+          <div>
+            <h2 class="section-title">About DigiFab AI</h2>
+            <div class="bio-card">
+              <div>
+                <div class="bio-name">Dr Isil Berkun</div>
+                <div class="bio-role">Founder, DigiFab AI • LinkedIn Top Voice in AI</div>
+              </div>
+              <p>
+                Isil is a former Staff AI Software Engineer at Intel with a PhD in Electrical Engineering.
+                She has built production machine learning systems for semiconductor, electronics, and manufacturing lines and
+                teaches AI and predictive analytics through LinkedIn Learning and universities.
+              </p>
+              <p>
+                DigiFab AI is her focused effort to bring trustworthy, multi-sensor AI copilots to metal additive manufacturing
+                and advanced fabrication environments.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="section-title">Who should connect at Formnext</h2>
+            <p class="section-sub">
+              If any of these sound like you, a ten-minute conversation at the show can be very high value.
+            </p>
+            <div class="grid-3">
+              <div class="card">
+                <h3>Machine OEMs</h3>
+                <p>
+                  Builders who want differentiated monitoring and AI options on their platforms without standing up
+                  a full internal ML research team.
+                </p>
+              </div>
+              <div class="card">
+                <h3>Tier 1 and Tier 2 suppliers</h3>
+                <p>
+                  Aerospace, energy, or mobility suppliers who live with tight specs, increasing audit pressure,
+                  and the cost of scrap in high-mix environments.
+                </p>
+              </div>
+              <div class="card">
+                <h3>R&amp;D and pilot lines</h3>
+                <p>
+                  Teams running advanced alloys, parameter development, or qualification campaigns that need richer process data
+                  and better tools for experimentation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2 class="section-title">Contact & follow-up</h2>
+        <p class="section-sub">
+          DigiFab AI is currently working with a small group of early partners. To explore collaboration, reach out before or after Formnext.
+        </p>
+
+        <div class="contact-box">
+          <div class="contact-main">
+            <div><strong>Email</strong> &nbsp;
+              <a href="mailto:berkunis@digifab.ai">berkunis@digifab.ai</a>
+            </div>
+            <div><strong>LinkedIn</strong> &nbsp;
+              <a href="https://www.linkedin.com/in/isilberkun/" target="_blank" rel="noopener">
+                linkedin.com/in/isilberkun
+              </a>
+            </div>
+            <div><strong>Book a meeting</strong> &nbsp;
+              <a href="https://calendly.com/berkunis-digifab" target="_blank" rel="noopener">
+                calendly.com/berkunis-digifab
+              </a>
+            </div>
+
+            <form class="contact-form" onsubmit="handleContactSubmit(event)">
+              <div class="form-row-2">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name">
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@company.com">
+                </div>
+              </div>
+              <div>
+                <label for="location">Where are you located?</label>
+                <input id="location" name="location" type="text" placeholder="City, country">
+              </div>
+              <div>
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" placeholder="Briefly describe your use case, machines, and timeline."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send details via email
+              </button>
+              <div class="form-note">
+                This opens your email client with the information pre-filled and sends it directly to berkunis@digifab.ai.
+              </div>
+            </form>
+          </div>
+
+          <div class="contact-links">
+            <a class="btn btn-outline" href="https://calendly.com/berkunis-digifab" target="_blank" rel="noopener">
+              Schedule a strategy call
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>DigiFab AI • AI copilots for advanced manufacturing</span>
+      <span>Based in Vancouver, Washington • Collaborating worldwide</span>
+    </footer>
+  </div>
+</body>
+</html>
